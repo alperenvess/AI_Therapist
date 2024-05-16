@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Ask me anything...">
+    <button onclick="getResponse()">Send</button>
+    <script>
+        function getResponse() {
+            var userMessage = document.getElementById("userInput").value;
+            document.getElementById("chatbox").innerHTML += "<p><strong>You:</strong> " + userMessage + "</p>";
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/get_bot_response", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = xhr.responseText;
+                    document.getElementById("chatbox").innerHTML += "<p><strong>Bot:</strong> " + response + "</p>";
+                }
+            };
+            xhr.send("message=" + userMessage);
+            document.getElementById("userInput").value = "";
+        }
+    </script>
+</body>
+</html>
