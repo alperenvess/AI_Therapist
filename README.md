@@ -73,29 +73,6 @@ This Flask web app utilizes a combination of Python libraries to power its conve
 
 8. Click send to see the response from AI
 
-## Libraries Used
-
-- **Flask**: Python web framework.
-- **Pandas**: Data manipulation library.
-- **Bootstrap**: Frontend framework for styling.
-
-
-How to Use
-
-Clone the repository:
-git clone https://github.com/alperenvess/AI_Therapist.git
-
-Navigate to the project directory:
-cd AI_Therapist
-
-Install the required dependencies:
-pip install -r requirements.txt
-
-Run the application:
-python3.11 train.py
-python3.11 app.py
-
-Open your web browser and go to http://127.0.0.1:5000/.
 
 AI_Therapist/
 ├── static/
