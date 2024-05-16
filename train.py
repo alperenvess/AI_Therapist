@@ -21,7 +21,7 @@ for intent in intents['intents']:
         texts.extend(w)
         # add documents in the corpus
         documents.append((w, intent['tag']))
-        # add to our classes list
+        # add to classes list
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
