@@ -54,7 +54,7 @@
     },
     {"tag": "creation",
         "patterns": ["Who created you?", "How were you made?", "How were you created?"],
-        "responses": ["I was created by >.", "I was trained on a text dataset using Deep Learning & Natural Language Processing techniques", "The real question is: Who created you?"]
+        "responses": ["I was created by human to support others.", "I was trained on a text dataset using Deep Learning & Natural Language Processing techniques"]
     },
    
     {"tag": "help",
