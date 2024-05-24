@@ -3,29 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI_Therapist</title>
+    <title>AI Therapist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>AI_Therapist</h1>
-    <div id="chatbox"></div>
-    <input type="text" id="userInput" placeholder="Ask me anything...">
-    <button onclick="getResponse()">Send</button>
-    <script>
-        function getResponse() {
-            var userMessage = document.getElementById("userInput").value;
-            document.getElementById("chatbox").innerHTML += "<p><strong>You:</strong> " + userMessage + "</p>";
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/get_bot_response", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var response = xhr.responseText;
-                    document.getElementById("chatbox").innerHTML += "<p><strong>Bot:</strong> " + response + "</p>";
-                }
-            };
-            xhr.send("message=" + userMessage);
-            document.getElementById("userInput").value = "";
-        }
-    </script>
+    <div class="container">
+        <h1>AI Therapist</h1>
+        <div id="chatbox" class="chatbox">
+            <div class="message bot">
+                <img src="/static/ai_bot_image.png" alt="Bot">
+                <div class="text">Welcome to AI Therapist, please input your thoughts to start the session.</div>
+            </div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Ask me anything...">
+            <button onclick="getResponse()">Send</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
