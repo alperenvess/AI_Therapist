@@ -1,2 +1,6 @@
-Flask==3.0.0
-numpy==1.24.2
+Flask
+mysql-connector-python
+numpy
+keras
+werkzeug
+
