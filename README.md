@@ -12,7 +12,7 @@ How It Works: This Flask web app utilizes a combination of Python libraries to p
 
 ## Overview
 
-Virtual Therapist is an AI-powered web application designed to provide a confidential and supportive environment for individuals to discuss their thoughts and feelings. Created with the intention of offering flexibility and accessibility, our app allows users to engage in therapy-like conversations without the need to talk to a human therapist.
+Virtual Therapist is an AI-powered web application designed to provide a confidential and supportive environment for individuals to discuss their thoughts and feelings. Created with the intention of offering flexibility and accessibility, app allows users to engage in therapy-like conversations without the need to talk to a human therapist.
 
 ## Why I Chose to Create This App
 
