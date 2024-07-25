@@ -115,7 +115,7 @@
     },
     {"tag": "suicide",
         "patterns": ["I want to kill myself", "I've thought about killing myself.", "I want to die", "I am going to kill myself", "I am going to commit suicide"],
-        "responses": ["I'm very sorry to hear that but you have so much to look forward to. Please seek help by contacting: 9152987821."]
+        "responses": ["I'm very sorry to hear that but you have so much to look forward to. Please seek help by contacting: 112."]
     },
     {"tag": "hate-you",
         "patterns": ["I hate you", "I don't like you", "I don't trust you"],
@@ -367,7 +367,7 @@
           "i want to kill myself"
       ],
       "responses": [
-          "helpline is available,you can contact the counsellor today:Befrienders Kenya helpline number is +254 722 178 177..always remember you mean something to someone."
+          "Helpline is available,you can contact the counsellor today:Turk helpline number is 112 always remember you mean something to someone."
       ]
   },
   {
