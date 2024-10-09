@@ -8,7 +8,7 @@ import numpy as np
 import json
 from config import MySQL_conn
 
-app = Flask(__name__)
+app = Flask(__name__) 
 app.secret_key = "docker"
 
 login_manager = LoginManager()
