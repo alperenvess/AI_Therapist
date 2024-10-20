@@ -136,6 +136,25 @@ button:hover {
     border-radius: 5px;
 }
 
+.prompts-container {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.prompt-button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.prompt-button:hover {
+    background-color: #d0d0d0;
+}
 
 
 @keyframes fade-in {

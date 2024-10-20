@@ -2,7 +2,7 @@
 
 // Function to add a new message to the chat container
 function appendMessage(message, isUser) {
-    var chatContainer = document.getElementById('messages');
+    var chatContainer = document.getElementById('messages'); 
     var messageDiv = document.createElement('div');
     var messageContainer = document.createElement('div');
     var messageText = document.createElement('div');
@@ -11,11 +11,11 @@ function appendMessage(message, isUser) {
     profileImage.className = 'profile-image';
 
     if (isUser) {
-        profileImage.src = "/static/user_image.png"; // Change 'user_image.png' to your user image filename
+        profileImage.src = "/static/user_image.png"; 
         profileImage.alt = "User";
         messageContainer.className = 'user-message';
     } else {
-        profileImage.src = "/static/ai_bot_image.png"; // Change 'ai_bot_image.png' to your bot image filename
+        profileImage.src = "/static/ai_bot_image.png"; 
         profileImage.alt = "Bot";
         messageContainer.className = 'bot-message';
     }
@@ -29,37 +29,57 @@ function appendMessage(message, isUser) {
     messageDiv.className = 'message';
 
     chatContainer.appendChild(messageDiv);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+    
+    
+    setTimeout(function() {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }, 100); 
 }
 
-// Function to handle form submission
 function handleFormSubmission(event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); 
 
     var messageInput = document.getElementById('message-input');
-    var message = messageInput.value.trim(); // Trim whitespace from the message
+    var message = messageInput.value.trim(); 
 
     if (message !== '') {
-        // Add user's message to the chat container
         appendMessage(message, true);
 
-        // Clear the message input field
         messageInput.value = '';
 
-        // Send AJAX request to Flask backend to get bot response
         $.ajax({
             type: 'POST',
             url: '/get_bot_response',
             data: { message: message },
-            success: function(response) {
-                appendMessage(response, false); // Append bot's response to chat
+            success: function(data) {
+                console.log("Received response from bot:", data);
+                
+                if (data.response) {
+                    appendMessage(data.response, false);
+                    
+                    if (data.prompts && data.prompts.length > 0) {
+                        $('#messages').append('<div class="bot-options"><strong>Suggestions:</strong></div>');
+                        data.prompts.forEach(function(option) {
+                            var button = $('<button class="option-button">' + option + '</button>');
+                            button.on('click', function() {
+                                messageInput.value = option;
+                            });
+                            $('#messages').append(button);
+                        });
+
+                        setTimeout(function() {
+                            var chatContainer = document.getElementById('messages');
+                            chatContainer.scrollTop = chatContainer.scrollHeight;
+                        }, 100);
+                    }
+                } else {
+                    console.error("No response from bot or invalid data");
+                }
             },
             error: function(xhr, status, error) {
-                console.error(xhr.responseText);
+                console.error("Error during AJAX request:", xhr.responseText);
             }
         });
     }
 }
-
-// Event listener for form submission
 document.getElementById('chat-form').addEventListener('submit', handleFormSubmission);
